@@ -4,7 +4,7 @@ Class ODS.DT.StatusHistory Extends (%SerialObject, %XML.Adaptor)
 /// 记录时间戳/序号.
 Property SequenceNo As %String(XMLNAME = "sequenceno", XMLPROJECTION = "ELEMENT") [ Required ];
 
-/// planned | arrived | triaged | in-progress | onleave | finished | cancelled +.
+/// planned | arrived | trigged | in-progress | onleave | finished | cancelled +.
 Property Status As ODS.DT.Coding(XMLNAME = "status", XMLPROJECTION = "ELEMENT") [ Required ];
 
 /// The time that the episode was in the specified status.

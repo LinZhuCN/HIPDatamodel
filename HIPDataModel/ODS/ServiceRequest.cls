@@ -2,7 +2,7 @@
 Class ODS.ServiceRequest Extends (%Persistent, %XML.Adaptor) [ ProcedureBlock ]
 {
 
-Parameter XMLNAME = "ProcessRequest";
+Parameter XMLNAME = "ServiceRequest";
 
 Parameter XMLSEQUENCE = 1;
 
