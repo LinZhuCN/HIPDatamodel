@@ -56,7 +56,7 @@ Property Code As ODS.DT.Coding(XMLNAME = "code", XMLPROJECTION = "ELEMENT") [ Re
 Property Subject As ODS.Patient(XMLNAME = "subject", XMLPROJECTION = "ELEMENT");
 
 /// The healthcare event  (e.g. a patient and healthcare provider interaction) during which this observation is made.
-Relationship Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT") [ Cardinality = one, Inverse = Observations ];
+Relationship Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT", XMLREFERENCE = "ID") [ Cardinality = one, Inverse = Observations ];
 
 Index EncounterIndex On Encounter;
 

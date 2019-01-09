@@ -18,6 +18,19 @@ Property Status As ODS.DT.Coding(XMLNAME = "status", XMLPROJECTION = "ELEMENT");
 /// Time period during which the patient was present at the location.
 Property Period As ODS.DT.Period(XMLNAME = "period", XMLPROJECTION = "ELEMENT");
 
+/// The following properties are added to deal with Chinese hospital management entities such as bed, ward, department
+/// 科室，The department of a hospital
+Property Department As ODS.DT.Coding(XMLNAME = "department", XMLPROJECTION = "ELEMENT");
+
+/// 病区，Ward, not necessary exclusively referred by one departments
+Property Ward As ODS.DT.Coding(XMLNAME = "ward", XMLPROJECTION = "ELEMENT");
+
+/// 病房，Room of a ward
+Property Room As %String(XMLNAME = "room", XMLPROJECTION = "ELEMENT");
+
+/// 床号，Bed Number
+Property Bed As %String(XMLNAME = "bed", XMLPROJECTION = "ELEMENT");
+
 Storage Default
 {
 <Data name="LocationState">
@@ -29,6 +42,18 @@ Storage Default
 </Value>
 <Value name="3">
 <Value>Period</Value>
+</Value>
+<Value name="4">
+<Value>Department</Value>
+</Value>
+<Value name="5">
+<Value>Ward</Value>
+</Value>
+<Value name="6">
+<Value>Room</Value>
+</Value>
+<Value name="7">
+<Value>Bed</Value>
 </Value>
 </Data>
 <State>LocationState</State>

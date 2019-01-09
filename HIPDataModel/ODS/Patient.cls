@@ -2,7 +2,7 @@
 Class ODS.Patient Extends (%Persistent, %XML.Adaptor)
 {
 
-Property Identifier As list of ODS.DT.Identifier(XMLNAME = "identifier", XMLPROJECTION = "ELEMENT");
+Property Identifier As list Of ODS.DT.Identifier(XMLNAME = "identifier", XMLPROJECTION = "ELEMENT");
 
 Property Active As %Boolean(XMLNAME = "active", XMLPROJECTION = "ELEMENT");
 
@@ -52,6 +52,9 @@ Property MultipleBirthInteger As %Integer(XMLNAME = "multipleBirthInteger", XMLP
 /// VIP
 Property VIP As list Of ODS.DT.VIP(XMLNAME = "vip", XMLPROJECTION = "ELEMENT");
 
+/// 就诊
+Relationship Encounters As ODS.Encounter(XMLNAME = "multipleBirthInteger", XMLPROJECTION = "ELEMENT") [ Cardinality = many, Inverse = Subject ];
+
 // Property photo As list Of HS.FHIR.vSTU3.Model.Base.Attachment(XMLNAME = "photo", XMLPROJECTION = "ELEMENT");
 
 // Property contact As list Of HS.FHIR.vSTU3.Model.Resource.Patient.Contact(XMLNAME = "contact", XMLPROJECTION = "ELEMENT");
@@ -65,8 +68,6 @@ Property VIP As list Of ODS.DT.VIP(XMLNAME = "vip", XMLPROJECTION = "ELEMENT");
 // Property managingOrganization As HS.FHIR.vSTU3.Model.Base.Reference(XMLNAME = "managingOrganization", XMLPROJECTION = "ELEMENT");
 
 // Property link As list Of HS.FHIR.vSTU3.Model.Resource.Patient.Link(XMLNAME = "link", XMLPROJECTION = "ELEMENT");
-
-Relationship Encounters As ODS.Encounter [ Cardinality = many, Inverse = Subject ];
 
 /// Image of the patient.
 /// A contact party (e.g. guardian, partner, friend) for the patient.

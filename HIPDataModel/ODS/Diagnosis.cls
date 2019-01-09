@@ -36,9 +36,9 @@ Property OnsetTime As %TimeStamp(XMLNAME = "onsetTime", XMLPROJECTION = "ELEMENT
 /// 是否主要诊断
 Property IsPrimary As %Boolean(XMLNAME = "isPrimary", XMLPROJECTION = "ELEMENT") [ InitialExpression = 1 ];
 
-Relationship Encounter As ODS.Encounter [ Cardinality = one, Inverse = Diagnoses ];
+Relationship Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT", XMLREFERENCE = "ID") [ Cardinality = one, Inverse = Diagnoses ];
 
-Index EncounterIndex On Encounter;
+// Index EncounterIndex On Encounter;
 
 Storage Default
 {

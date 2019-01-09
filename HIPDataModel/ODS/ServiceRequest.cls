@@ -29,9 +29,9 @@ Property Status As ODS.DT.Coding(XMLNAME = "status", XMLPROJECTION = "ELEMENT") 
 /// 医嘱状态历史
 Property StatusHistory As list Of ODS.DT.StatusHistory(XMLNAME = "statusHistory", XMLPROJECTION = "ELEMENT");
 
+/*
 /// 上次医嘱状态，计算属性
-Property PreviousStatus As ODS.DT.Coding [ Calculated ];
-
+Property PreviousStatus As ODS.DT.Coding [ Calculated ];*/
 /// Whether the request is a proposal, plan, an original order or a reflex order.
 Property Intent As ODS.DT.Coding(XMLNAME = "intent", XMLPROJECTION = "ELEMENT") [ Required ];
 
@@ -56,7 +56,7 @@ Property Subject As ODS.Patient(XMLNAME = "subject", XMLPROJECTION = "ELEMENT") 
 
 /// An encounter or episode of care that provides additional information about the healthcare context in which this request is made.
 /// 就诊
-Relationship Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT") [ Cardinality = one, Inverse = ServiceRequests ];
+Relationship Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT", XMLREFERENCE = "ID") [ Cardinality = parent, Inverse = ServiceRequests ];
 
 Property OccurrenceDateTime As %TimeStamp(XMLNAME = "occurrenceDateTime", XMLPROJECTION = "ELEMENT");
 
@@ -97,6 +97,12 @@ Property BodySite As list Of ODS.DT.Coding(XMLNAME = "bodySite", XMLPROJECTION =
 /// Any other notes and comments made about the service request. For example, letting provider know that "patient hates needles" or other provider instructions.
 /// 医嘱说明
 Property Note As list Of %String(XMLNAME = "note", XMLPROJECTION = "ELEMENT");
+
+/// Extension added
+Property Extension As ODS.ServiceRequest.Extension(XMLNAME = "extension", XMLPROJECTION = "ELEMENT");
+
+/// 下达医嘱的地点（科室、病房等）
+Property LocationReference As ODS.Location(XMLNAME = "locationReference", XMLPROJECTION = "ELEMENT");
 
 Index EncounterIndex On Encounter;
 
@@ -171,6 +177,12 @@ Storage Default
 </Value>
 <Value name="23">
 <Value>StatusHistory</Value>
+</Value>
+<Value name="24">
+<Value>Extension</Value>
+</Value>
+<Value name="25">
+<Value>LocationReference</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.ServiceRequestD</DataLocation>
