@@ -1,13 +1,15 @@
 Class ODS.ServiceRequest.Extension Extends (%SerialObject, %XML.Adaptor) [ ProcedureBlock ]
 {
 
-// To contain 条码
-
-Property Barcode As %String(XMLNAME = "barcode", XMLPROJECTION = "ELEMENT");
-
 // To Contain ORC-5
 
 Property OrderStatus As %String(XMLNAME = "orderstatus", XMLPROJECTION = "ELEMENT");
+
+// To Contain ActionBy
+
+Property ActionBy As ODS.Practitioner(XMLNAME = "actionby", XMLPROJECTION = "ELEMENT");
+
+Property BloodTransfusionExtension As ODS.ServiceRequest.Extension.BloodTransfusionExtension(XMLNAME = "bloodtransfusionextension", XMLPROJECTION = "ELEMENT");
 
 Storage Default
 {
@@ -17,6 +19,12 @@ Storage Default
 </Value>
 <Value name="2">
 <Value>OrderStatus</Value>
+</Value>
+<Value name="3">
+<Value>ActionBy</Value>
+</Value>
+<Value name="4">
+<Value>BloodTransfusionExtension</Value>
 </Value>
 </Data>
 <State>ExtensionState</State>

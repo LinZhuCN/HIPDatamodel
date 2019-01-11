@@ -50,6 +50,9 @@ Property Category As list Of ODS.DT.Coding(XMLNAME = "category", XMLPROJECTION =
 /// 医嘱代码
 Property Code As ODS.DT.Coding(XMLNAME = "code", XMLPROJECTION = "ELEMENT") [ Required ];
 
+/// 医嘱数量
+Property QuantityQuantity As ODS.DT.Quantity(XMLNAME = "quantityQuantity", XMLPROJECTION = "ELEMENT");
+
 /// On whom or what the procedure or diagnostic is to be performed. This is usually a human patient, but can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans).
 /// 医嘱目标患者
 Property Subject As ODS.Patient(XMLNAME = "subject", XMLPROJECTION = "ELEMENT") [ Required ];
@@ -102,7 +105,7 @@ Property Note As list Of %String(XMLNAME = "note", XMLPROJECTION = "ELEMENT");
 Property Extension As ODS.ServiceRequest.Extension(XMLNAME = "extension", XMLPROJECTION = "ELEMENT");
 
 /// 下达医嘱的地点（科室、病房等）
-Property LocationReference As ODS.Location(XMLNAME = "locationReference", XMLPROJECTION = "ELEMENT");
+Property Location As ODS.ServiceRequest.Location(XMLNAME = "location", XMLPROJECTION = "ELEMENT");
 
 Index EncounterIndex On Encounter;
 
@@ -183,6 +186,12 @@ Storage Default
 </Value>
 <Value name="25">
 <Value>LocationReference</Value>
+</Value>
+<Value name="26">
+<Value>Location</Value>
+</Value>
+<Value name="27">
+<Value>QuantityQuantity</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.ServiceRequestD</DataLocation>
