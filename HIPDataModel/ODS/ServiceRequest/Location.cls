@@ -9,9 +9,9 @@ Parameter XMLSEQUENCE = 1;
 
 Parameter XMLTYPE = "ServiceRequest.Location";
 
-/// The location where the encounter takes place.本次所在病区,例如手术室、ICU、心内一病区.
-Property Location As ODS.Location(XMLNAME = "location", XMLPROJECTION = "ELEMENT") [ Required ];
+// Property Location As ODS.Location(XMLNAME = "location", XMLPROJECTION = "ELEMENT") [ Required ];
 
+/// The location where the encounter takes place.本次所在病区,例如手术室、ICU、心内一病区.
 /// The status of the participants' presence at the specified location during the period specified. If the participant is is no longer at the location, then the period will have an end date/time.
 Property Status As ODS.DT.Coding(XMLNAME = "status", XMLPROJECTION = "ELEMENT");
 

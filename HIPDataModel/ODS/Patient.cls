@@ -1,6 +1,8 @@
 /// 患者
-Class ODS.Patient Extends (%Persistent, %XML.Adaptor)
+Class ODS.Patient Extends (%Persistent, ODS.DT.AbstractResource)
 {
+
+Index ResourceIdIdx On ResourceId [ Unique ];
 
 Property Identifier As list Of ODS.DT.Identifier(XMLNAME = "identifier", XMLPROJECTION = "ELEMENT");
 
@@ -69,99 +71,87 @@ Relationship Encounters As ODS.Encounter(XMLNAME = "multipleBirthInteger", XMLPR
 
 // Property link As list Of HS.FHIR.vSTU3.Model.Resource.Patient.Link(XMLNAME = "link", XMLPROJECTION = "ELEMENT");
 
-/// Image of the patient.
-/// A contact party (e.g. guardian, partner, friend) for the patient.
-/// This patient is known to be an animal.
-/// Languages which may be used to communicate with the patient about his or her health.
-/// Patient's nominated care provider.
-/// Organization that is the custodian of the patient record.
-/// Link to another patient resource that concerns the same actual patient.
+/// This callback method is invoked by the <METHOD>%Save</METHOD> method to 
+/// provide notification that the object is being saved. It is called before 
+/// any data is written to disk.
+/// 
+/// <P><VAR>insert</VAR> will be set to 1 if this object is being saved for the first time.
+/// 
+/// <P>If this method returns an error then the call to <METHOD>%Save</METHOD> will fail.
+Method %OnBeforeSave(insert As %Boolean) As %Status [ Private, ServerOnly = 1 ]
+{
+	if (insert){
+		if "" = ..ResourceId{
+			set ..ResourceId = $SYSTEM.Util.CreateGUID()
+		}	
+	}
+	Quit $$$OK
+}
+
 Storage Default
 {
 <Data name="PatientDefaultData">
+<Subscript>"Patient"</Subscript>
 <Value name="1">
-<Value>%%CLASSNAME</Value>
-</Value>
-<Value name="2">
 <Value>Identifier</Value>
 </Value>
-<Value name="3">
+<Value name="2">
 <Value>Active</Value>
 </Value>
-<Value name="4">
+<Value name="3">
 <Value>Name</Value>
 </Value>
+<Value name="4">
+<Value>Gender</Value>
+</Value>
 <Value name="5">
-<Value>gender</Value>
+<Value>BirthDate</Value>
 </Value>
 <Value name="6">
-<Value>BirthDate</Value>
+<Value>BirthTime</Value>
 </Value>
 <Value name="7">
 <Value>Deceased</Value>
 </Value>
 <Value name="8">
-<Value>deceasedDateTime</Value>
+<Value>DeceasedPlaceType</Value>
 </Value>
 <Value name="9">
-<Value>address</Value>
-</Value>
-<Value name="10">
-<Value>maritalStatus</Value>
-</Value>
-<Value name="11">
-<Value>multipleBirthBoolean</Value>
-</Value>
-<Value name="12">
-<Value>multipleBirthInteger</Value>
-</Value>
-<Value name="13">
-<Value>Gender</Value>
-</Value>
-<Value name="14">
 <Value>DeceasedDateTime</Value>
 </Value>
-<Value name="15">
+<Value name="10">
 <Value>Address</Value>
 </Value>
-<Value name="16">
+<Value name="11">
 <Value>MaritalStatus</Value>
 </Value>
-<Value name="17">
-<Value>MultipleBirthBoolean</Value>
-</Value>
-<Value name="18">
-<Value>MultipleBirthInteger</Value>
-</Value>
-<Value name="19">
-<Value>VIP</Value>
-</Value>
-<Value name="20">
-<Value>BirthTime</Value>
-</Value>
-<Value name="21">
-<Value>Ethnic</Value>
-</Value>
-<Value name="22">
-<Value>Occupation</Value>
-</Value>
-<Value name="23">
+<Value name="12">
 <Value>Nationality</Value>
 </Value>
-<Value name="24">
-<Value>DeceasedPlaceType</Value>
+<Value name="13">
+<Value>Ethnic</Value>
+</Value>
+<Value name="14">
+<Value>Occupation</Value>
+</Value>
+<Value name="15">
+<Value>MultipleBirthBoolean</Value>
+</Value>
+<Value name="16">
+<Value>MultipleBirthInteger</Value>
+</Value>
+<Value name="17">
+<Value>VIP</Value>
+</Value>
+<Value name="18">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="19">
+<Value>ResourceId</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.PatientD</DataLocation>
 <DefaultData>PatientDefaultData</DefaultData>
-<Description>
-<![CDATA[Image of the patient.
-A contact party (e.g. guardian, partner, friend) for the patient.
-This patient is known to be an animal.
-Languages which may be used to communicate with the patient about his or her health.
-Patient's nominated care provider.
-Organization that is the custodian of the patient record.
-Link to another patient resource that concerns the same actual patient.]]></Description>
 <IdLocation>^ODS.PatientD</IdLocation>
 <IndexLocation>^ODS.PatientI</IndexLocation>
 <StreamLocation>^ODS.PatientS</StreamLocation>

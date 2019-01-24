@@ -1,13 +1,13 @@
 /// 一次就诊
-Class ODS.Encounter Extends (%Persistent, %XML.Adaptor)
+Class ODS.Encounter Extends (%Persistent, ODS.DT.AbstractResource)
 {
 
 /// Identifier(s) by which this encounter is known.
 Property Identifier As ODS.DT.Identifier(XMLNAME = "identifier", XMLPROJECTION = "ELEMENT");
 
-/// 就诊状态 planned | arrived | triaged | in-progress | onleave | finished | cancelled +.
-Property Status As ODS.DT.Coding(XMLNAME = "status", XMLPROJECTION = "ELEMENT") [ Required ];
+// Property Status As ODS.DT.Coding(XMLNAME = "status", XMLPROJECTION = "ELEMENT") [ Required ];
 
+/// 就诊状态 planned | arrived | triaged | in-progress | onleave | finished | cancelled +.
 /// The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
 /// 就诊状态历史
 Property StatusHistory As list Of ODS.DT.StatusHistory(XMLNAME = "statusHistory", XMLPROJECTION = "ELEMENT");
@@ -119,6 +119,9 @@ Storage Default
 </Value>
 <Value name="16">
 <Value>Extension</Value>
+</Value>
+<Value name="17">
+<Value>ResourceId</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.EncounterD</DataLocation>

@@ -1,5 +1,5 @@
 /// 医嘱(非药嘱)
-Class ODS.ServiceRequest Extends (%Persistent, %XML.Adaptor) [ ProcedureBlock ]
+Class ODS.ServiceRequest Extends (%Persistent, ODS.DT.AbstractResource) [ ProcedureBlock ]
 {
 
 Parameter XMLNAME = "ServiceRequest";
@@ -116,87 +116,81 @@ Storage Default
 <Value>%%CLASSNAME</Value>
 </Value>
 <Value name="2">
-<Value>Identifier</Value>
+<Value>ResourceId</Value>
 </Value>
 <Value name="3">
-<Value>OrderQuantity</Value>
+<Value>Identifier</Value>
 </Value>
 <Value name="4">
-<Value>Requisition</Value>
+<Value>OrderQuantity</Value>
 </Value>
 <Value name="5">
-<Value>Status</Value>
+<Value>Requisition</Value>
 </Value>
 <Value name="6">
-<Value>Intent</Value>
+<Value>Status</Value>
 </Value>
 <Value name="7">
-<Value>Priority</Value>
+<Value>StatusHistory</Value>
 </Value>
 <Value name="8">
-<Value>DoNotPerform</Value>
+<Value>Intent</Value>
 </Value>
 <Value name="9">
-<Value>Category</Value>
+<Value>Priority</Value>
 </Value>
 <Value name="10">
-<Value>Code</Value>
+<Value>DoNotPerform</Value>
 </Value>
 <Value name="11">
-<Value>Subject</Value>
+<Value>Category</Value>
 </Value>
 <Value name="12">
-<Value>Encounter</Value>
+<Value>Code</Value>
 </Value>
 <Value name="13">
-<Value>OccurrenceDateTime</Value>
+<Value>QuantityQuantity</Value>
 </Value>
 <Value name="14">
-<Value>OccurrencePeriod</Value>
+<Value>Subject</Value>
 </Value>
 <Value name="15">
-<Value>OccurrenceTiming</Value>
+<Value>OccurrenceDateTime</Value>
 </Value>
 <Value name="16">
-<Value>AuthoredOn</Value>
+<Value>OccurrencePeriod</Value>
 </Value>
 <Value name="17">
-<Value>Requester</Value>
+<Value>AuthoredOn</Value>
 </Value>
 <Value name="18">
-<Value>PerformerType</Value>
+<Value>Requester</Value>
 </Value>
 <Value name="19">
-<Value>Performer</Value>
+<Value>PerformerType</Value>
 </Value>
 <Value name="20">
-<Value>ReasonCode</Value>
+<Value>Performer</Value>
 </Value>
 <Value name="21">
-<Value>BodySite</Value>
+<Value>ReasonCode</Value>
 </Value>
 <Value name="22">
-<Value>Note</Value>
+<Value>BodySite</Value>
 </Value>
 <Value name="23">
-<Value>StatusHistory</Value>
+<Value>Note</Value>
 </Value>
 <Value name="24">
 <Value>Extension</Value>
 </Value>
 <Value name="25">
-<Value>LocationReference</Value>
-</Value>
-<Value name="26">
 <Value>Location</Value>
 </Value>
-<Value name="27">
-<Value>QuantityQuantity</Value>
-</Value>
 </Data>
-<DataLocation>^ODS.ServiceRequestD</DataLocation>
+<DataLocation>{%%PARENT}("ServiceRequests")</DataLocation>
 <DefaultData>ServiceRequestDefaultData</DefaultData>
-<IdLocation>^ODS.ServiceRequestD</IdLocation>
+<IdLocation>^ODS.EncounterC("ServiceRequests")</IdLocation>
 <IndexLocation>^ODS.ServiceRequestI</IndexLocation>
 <StreamLocation>^ODS.ServiceRequestS</StreamLocation>
 <Type>%Library.CacheStorage</Type>
