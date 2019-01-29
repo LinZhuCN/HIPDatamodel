@@ -1,5 +1,5 @@
 /// FHIR未定义diagnosis(通过BackboneElement来实现),ODS定义如下
-Class ODS.Diagnosis Extends (%Persistent, %XML.Adaptor)
+Class ODS.Diagnosis Extends ODS.DT.AbstractResource
 {
 
 /// Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.
@@ -36,7 +36,7 @@ Property OnsetTime As %TimeStamp(XMLNAME = "onsetTime", XMLPROJECTION = "ELEMENT
 /// 是否主要诊断
 Property IsPrimary As %Boolean(XMLNAME = "isPrimary", XMLPROJECTION = "ELEMENT") [ InitialExpression = 1 ];
 
-Relationship Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT", XMLREFERENCE = "ID") [ Cardinality = one, Inverse = Diagnoses ];
+Property Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT") ;
 
 // Index EncounterIndex On Encounter;
 
@@ -47,37 +47,34 @@ Storage Default
 <Value>%%CLASSNAME</Value>
 </Value>
 <Value name="2">
-<Value>condition</Value>
+<Value>ResourceId</Value>
 </Value>
 <Value name="3">
-<Value>Role</Value>
-</Value>
-<Value name="4">
-<Value>rank</Value>
-</Value>
-<Value name="5">
-<Value>Encounter</Value>
-</Value>
-<Value name="6">
 <Value>Rank</Value>
 </Value>
-<Value name="7">
+<Value name="4">
 <Value>Code</Value>
 </Value>
-<Value name="8">
+<Value name="5">
 <Value>Description</Value>
 </Value>
-<Value name="9">
+<Value name="6">
 <Value>Status</Value>
 </Value>
-<Value name="10">
+<Value name="7">
 <Value>StatusHistory</Value>
 </Value>
-<Value name="11">
+<Value name="8">
 <Value>OnsetTime</Value>
 </Value>
-<Value name="12">
+<Value name="9">
 <Value>IsPrimary</Value>
+</Value>
+<Value name="10">
+<Value>Encounter</Value>
+</Value>
+<Value name="11">
+<Value>Role</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.DiagnosisD</DataLocation>

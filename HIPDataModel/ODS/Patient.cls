@@ -1,8 +1,14 @@
 /// 患者
-Class ODS.Patient Extends (%Persistent, ODS.DT.AbstractResource)
+Class ODS.Patient Extends ODS.DT.AbstractResource
 {
 
-Index ResourceIdIdx On ResourceId [ Unique ];
+
+/// If the resource need a univers unique and required id, overide ResourceId as required
+Property ResourceId As %String(XMLNAME = "ResourceId", XMLPROJECTION = "ELEMENT")[required];
+
+///Index ResourceIdIdx On ResourceId [ Unique ];
+
+
 
 Property Identifier As list Of ODS.DT.Identifier(XMLNAME = "identifier", XMLPROJECTION = "ELEMENT");
 
@@ -55,7 +61,7 @@ Property MultipleBirthInteger As %Integer(XMLNAME = "multipleBirthInteger", XMLP
 Property VIP As list Of ODS.DT.VIP(XMLNAME = "vip", XMLPROJECTION = "ELEMENT");
 
 /// 就诊
-Relationship Encounters As ODS.Encounter(XMLNAME = "multipleBirthInteger", XMLPROJECTION = "ELEMENT") [ Cardinality = many, Inverse = Subject ];
+Property Encounters As list Of ODS.Encounter(XMLNAME = "multipleBirthInteger", XMLPROJECTION = "ELEMENT");
 
 // Property photo As list Of HS.FHIR.vSTU3.Model.Base.Attachment(XMLNAME = "photo", XMLPROJECTION = "ELEMENT");
 
@@ -88,66 +94,71 @@ Method %OnBeforeSave(insert As %Boolean) As %Status [ Private, ServerOnly = 1 ]
 	Quit $$$OK
 }
 
+
+
+
 Storage Default
 {
 <Data name="PatientDefaultData">
-<Subscript>"Patient"</Subscript>
 <Value name="1">
-<Value>Identifier</Value>
-</Value>
-<Value name="2">
-<Value>Active</Value>
-</Value>
-<Value name="3">
-<Value>Name</Value>
-</Value>
-<Value name="4">
-<Value>Gender</Value>
-</Value>
-<Value name="5">
-<Value>BirthDate</Value>
-</Value>
-<Value name="6">
-<Value>BirthTime</Value>
-</Value>
-<Value name="7">
-<Value>Deceased</Value>
-</Value>
-<Value name="8">
-<Value>DeceasedPlaceType</Value>
-</Value>
-<Value name="9">
-<Value>DeceasedDateTime</Value>
-</Value>
-<Value name="10">
-<Value>Address</Value>
-</Value>
-<Value name="11">
-<Value>MaritalStatus</Value>
-</Value>
-<Value name="12">
-<Value>Nationality</Value>
-</Value>
-<Value name="13">
-<Value>Ethnic</Value>
-</Value>
-<Value name="14">
-<Value>Occupation</Value>
-</Value>
-<Value name="15">
-<Value>MultipleBirthBoolean</Value>
-</Value>
-<Value name="16">
-<Value>MultipleBirthInteger</Value>
-</Value>
-<Value name="17">
-<Value>VIP</Value>
-</Value>
-<Value name="18">
 <Value>%%CLASSNAME</Value>
 </Value>
-<Value name="19">
+<Value name="2">
 <Value>ResourceId</Value>
+</Value>
+<Value name="3">
+<Value>Identifier</Value>
+</Value>
+<Value name="4">
+<Value>Active</Value>
+</Value>
+<Value name="5">
+<Value>Name</Value>
+</Value>
+<Value name="6">
+<Value>Gender</Value>
+</Value>
+<Value name="7">
+<Value>BirthDate</Value>
+</Value>
+<Value name="8">
+<Value>BirthTime</Value>
+</Value>
+<Value name="9">
+<Value>Deceased</Value>
+</Value>
+<Value name="10">
+<Value>DeceasedPlaceType</Value>
+</Value>
+<Value name="11">
+<Value>DeceasedDateTime</Value>
+</Value>
+<Value name="12">
+<Value>Address</Value>
+</Value>
+<Value name="13">
+<Value>MaritalStatus</Value>
+</Value>
+<Value name="14">
+<Value>Nationality</Value>
+</Value>
+<Value name="15">
+<Value>Ethnic</Value>
+</Value>
+<Value name="16">
+<Value>Occupation</Value>
+</Value>
+<Value name="17">
+<Value>MultipleBirthBoolean</Value>
+</Value>
+<Value name="18">
+<Value>MultipleBirthInteger</Value>
+</Value>
+<Value name="19">
+<Value>VIP</Value>
+</Value>
+<Value name="20">
+<Value>Encounters</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.PatientD</DataLocation>

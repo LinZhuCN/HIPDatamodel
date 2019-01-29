@@ -1,5 +1,5 @@
 /// DE02.01.009	地址
-Class ODS.DT.Address Extends (%SerialObject, %XML.Adaptor)
+Class ODS.DT.Address Extends ODS.DT.EmbeddedDataType
 {
 
 /// The purpose of this address.
@@ -45,20 +45,22 @@ Property Type As %String(XMLNAME = "type", XMLPROJECTION = "ELEMENT");
 /// DE02.01.003.00 常住地址户籍标志Household registration	标识个体的常住地址是否为户籍所在地 
 Property IsHousehold As %Boolean;
 
+
+
 Storage Default
 {
 <Data name="AddressState">
 <Value name="1">
-<Value>Use</Value>
-</Value>
-<Value name="2">
-<Value>Type</Value>
-</Value>
-<Value name="3">
 <Value>Text</Value>
 </Value>
-<Value name="4">
+<Value name="2">
 <Value>Line</Value>
+</Value>
+<Value name="3">
+<Value>Country</Value>
+</Value>
+<Value name="4">
+<Value>State</Value>
 </Value>
 <Value name="5">
 <Value>City</Value>
@@ -67,28 +69,25 @@ Storage Default
 <Value>District</Value>
 </Value>
 <Value name="7">
-<Value>State</Value>
-</Value>
-<Value name="8">
-<Value>PostalCode</Value>
-</Value>
-<Value name="9">
-<Value>Country</Value>
-</Value>
-<Value name="10">
-<Value>Period</Value>
-</Value>
-<Value name="11">
-<Value>IsHousehold</Value>
-</Value>
-<Value name="12">
 <Value>Subdistrict</Value>
 </Value>
-<Value name="13">
+<Value name="8">
 <Value>Street</Value>
 </Value>
-<Value name="14">
+<Value name="9">
 <Value>HouseNumber</Value>
+</Value>
+<Value name="10">
+<Value>PostalCode</Value>
+</Value>
+<Value name="11">
+<Value>Period</Value>
+</Value>
+<Value name="12">
+<Value>Type</Value>
+</Value>
+<Value name="13">
+<Value>IsHousehold</Value>
 </Value>
 </Data>
 <State>AddressState</State>

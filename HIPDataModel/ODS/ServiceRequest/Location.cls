@@ -1,6 +1,6 @@
 /// 记录患者医嘱的来源科室
 /// An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
-Class ODS.ServiceRequest.Location Extends (%SerialObject, %XML.Adaptor) [ ProcedureBlock ]
+Class ODS.ServiceRequest.Location Extends ODS.DT.EmbeddedDataType
 {
 
 Parameter XMLNAME = "ServiceRequest.Location";
@@ -35,17 +35,20 @@ Property Room As %String(XMLNAME = "room", XMLPROJECTION = "ELEMENT");
 /// 床号，Bed Number
 Property Bed As %String(XMLNAME = "bed", XMLPROJECTION = "ELEMENT");
 
+
+
+
 Storage Default
 {
 <Data name="LocationState">
 <Value name="1">
-<Value>Location</Value>
-</Value>
-<Value name="2">
 <Value>Status</Value>
 </Value>
-<Value name="3">
+<Value name="2">
 <Value>Period</Value>
+</Value>
+<Value name="3">
+<Value>Branch</Value>
 </Value>
 <Value name="4">
 <Value>Department</Value>
@@ -58,9 +61,6 @@ Storage Default
 </Value>
 <Value name="7">
 <Value>Bed</Value>
-</Value>
-<Value name="8">
-<Value>Branch</Value>
 </Value>
 </Data>
 <State>LocationState</State>

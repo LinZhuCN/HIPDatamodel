@@ -1,4 +1,4 @@
-Class ODS.DT.HumanName Extends (%SerialObject, %XML.Adaptor)
+Class ODS.DT.HumanName Extends ODS.DT.EmbeddedDataType
 {
 
 /// Identifies the purpose for this name.
@@ -24,31 +24,30 @@ Property Suffix As %String(XMLNAME = "suffix", XMLPROJECTION = "ELEMENT");
 /// Indicates the period of time when this name was valid for the named person.
 Property Period As %String(XMLNAME = "period", XMLPROJECTION = "ELEMENT");
 
+
+
 Storage Default
 {
 <Data name="HumanNameState">
 <Value name="1">
-<Value>Use</Value>
-</Value>
-<Value name="2">
 <Value>Text</Value>
 </Value>
-<Value name="3">
+<Value name="2">
 <Value>Family</Value>
 </Value>
-<Value name="4">
+<Value name="3">
 <Value>Given</Value>
 </Value>
-<Value name="5">
+<Value name="4">
 <Value>UsedName</Value>
 </Value>
-<Value name="6">
+<Value name="5">
 <Value>Prefix</Value>
 </Value>
-<Value name="7">
+<Value name="6">
 <Value>Suffix</Value>
 </Value>
-<Value name="8">
+<Value name="7">
 <Value>Period</Value>
 </Value>
 </Data>

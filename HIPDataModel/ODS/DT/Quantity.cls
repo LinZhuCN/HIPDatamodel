@@ -1,6 +1,6 @@
 /// A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.<br>
 /// If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-Class ODS.DT.Quantity Extends (%SerialObject, %XML.Adaptor) [ ProcedureBlock ]
+Class ODS.DT.Quantity Extends ODS.DT.EmbeddedDataType
 {
 
 Parameter XMLNAME = "Quantity";
@@ -21,6 +21,8 @@ Property system As %String(XMLNAME = "system", XMLPROJECTION = "ELEMENT");
 /// A computer processable form of the unit in some unit representation system.
 Property code As ODS.DT.Coding(XMLNAME = "code", XMLPROJECTION = "ELEMENT");
 
+
+
 Storage Default
 {
 <Data name="QuantityState">
@@ -28,15 +30,12 @@ Storage Default
 <Value>value</Value>
 </Value>
 <Value name="2">
-<Value>comparator</Value>
-</Value>
-<Value name="3">
 <Value>unit</Value>
 </Value>
-<Value name="4">
+<Value name="3">
 <Value>system</Value>
 </Value>
-<Value name="5">
+<Value name="4">
 <Value>code</Value>
 </Value>
 </Data>

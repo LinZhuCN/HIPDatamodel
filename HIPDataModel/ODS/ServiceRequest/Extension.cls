@@ -1,4 +1,4 @@
-Class ODS.ServiceRequest.Extension Extends (%SerialObject, %XML.Adaptor) [ ProcedureBlock ]
+Class ODS.ServiceRequest.Extension Extends ODS.DT.EmbeddedDataType
 {
 
 // To Contain ORC-5
@@ -11,19 +11,23 @@ Property ActionBy As ODS.Practitioner(XMLNAME = "actionby", XMLPROJECTION = "ELE
 
 Property BloodTransfusionExtension As ODS.ServiceRequest.Extension.BloodTransfusionExtension(XMLNAME = "bloodtransfusionextension", XMLPROJECTION = "ELEMENT");
 
+Parameter XMLNAME = "ServiceRequest.Extension";
+
+Parameter XMLSEQUENCE = 1;
+
+Parameter XMLTYPE = "ServiceRequest.Extension";
+
+
 Storage Default
 {
 <Data name="ExtensionState">
 <Value name="1">
-<Value>Barcode</Value>
-</Value>
-<Value name="2">
 <Value>OrderStatus</Value>
 </Value>
-<Value name="3">
+<Value name="2">
 <Value>ActionBy</Value>
 </Value>
-<Value name="4">
+<Value name="3">
 <Value>BloodTransfusionExtension</Value>
 </Value>
 </Data>

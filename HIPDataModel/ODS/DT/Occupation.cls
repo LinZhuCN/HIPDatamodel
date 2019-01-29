@@ -1,5 +1,5 @@
 /// 职业
-Class ODS.DT.Occupation Extends (%SerialObject, %XML.Adaptor)
+Class ODS.DT.Occupation Extends ODS.DT.EmbeddedDataType
 {
 
 /// DE02.01.050.00	职称级别代码	个体职称所属级别在特定分类中的代码	S2	N1	1.高级职称 2.中级职称 3.初级职称	DE02.01.050.00
@@ -17,6 +17,9 @@ Property OrganizationWeb As %String;
 
 /// DE02.01.056.00	专业技术职务资格	个体的专业技术资格的名称在特定编码体系中的代码
 Property Specialty As %String;
+
+
+
 
 Storage Default
 {

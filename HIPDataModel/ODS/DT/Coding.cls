@@ -2,7 +2,7 @@
 /// 例如： Type    System    Version    Code       Display
 ///        诊断    ICD10     1          A01.0      伤寒
 ///        诊断    SNOMED    1          67885-4    伤寒
-Class ODS.DT.Coding Extends (%Persistent, %XML.Adaptor)
+Class ODS.DT.Coding Extends ODS.DT.EmbeddedDataType
 {
 
 /// 代码大类
@@ -23,41 +23,34 @@ Property Display As %String(XMLNAME = "display", XMLPROJECTION = "ELEMENT");
 /// Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
 Property UserSelected As %Boolean(XMLNAME = "userSelected", XMLPROJECTION = "ELEMENT");
 
+
+
+
 Storage Default
 {
-<Data name="CodingDefaultData">
-<Subscript>"1"</Subscript>
-<Value name="1">
-<Value>%%CLASSNAME</Value>
-</Value>
-<Value name="2">
-<Value>Type</Value>
-</Value>
-</Data>
 <Data name="CodingState">
 <Value name="1">
-<Value>System</Value>
+<Value>Type</Value>
 </Value>
 <Value name="2">
-<Value>Version</Value>
+<Value>System</Value>
 </Value>
 <Value name="3">
-<Value>Code</Value>
+<Value>Version</Value>
 </Value>
 <Value name="4">
-<Value>Display</Value>
+<Value>Code</Value>
 </Value>
 <Value name="5">
+<Value>Display</Value>
+</Value>
+<Value name="6">
 <Value>UserSelected</Value>
 </Value>
 </Data>
-<DataLocation>^ODS.DT.CodingD</DataLocation>
-<DefaultData>CodingDefaultData</DefaultData>
-<IdLocation>^ODS.DT.CodingD</IdLocation>
-<IndexLocation>^ODS.DT.CodingI</IndexLocation>
 <State>CodingState</State>
 <StreamLocation>^ODS.DT.CodingS</StreamLocation>
-<Type>%Library.CacheStorage</Type>
+<Type>%Library.CacheSerialState</Type>
 }
 
 }

@@ -1,9 +1,12 @@
-Class ODS.DT.VIP Extends (%SerialObject, %XML.Adaptor)
+Class ODS.DT.VIP Extends ODS.DT.EmbeddedDataType
 {
 
 Property Type As %String;
 
 Property Level As %String;
+
+
+
 
 Storage Default
 {

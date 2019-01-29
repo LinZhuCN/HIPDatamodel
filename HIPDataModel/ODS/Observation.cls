@@ -1,8 +1,8 @@
 /// 观察结果
-Class ODS.Observation Extends (%Persistent, %XML.Adaptor)
+Class ODS.Observation Extends ODS.DT.AbstractResource
 {
 
-Index ukObsNo On ObsId [ Unique ];
+//Index ukObsNo On ObsId [ Unique ];
 
 /// 观察结果序号
 Property ObsId As %String;
@@ -56,7 +56,7 @@ Property Code As ODS.DT.Coding(XMLNAME = "code", XMLPROJECTION = "ELEMENT") [ Re
 Property Subject As ODS.Patient(XMLNAME = "subject", XMLPROJECTION = "ELEMENT");
 
 /// The healthcare event  (e.g. a patient and healthcare provider interaction) during which this observation is made.
-Relationship Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT", XMLREFERENCE = "ID") [ Cardinality = one, Inverse = Observations ];
+Property Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT");
 
 Index EncounterIndex On Encounter;
 
@@ -161,8 +161,9 @@ Property ValueUnits As %String(MAXLEN = 30);
 /// .CareProviderType<br>
 Property Clinician As %String;
 
-/// Relationship Result As CDR.Result [ Cardinality = one, Inverse = ResultItems ];
-/// Index ResultIndex On Result;
+
+
+
 Storage Default
 {
 <Data name="ObservationDefaultData">
@@ -170,197 +171,92 @@ Storage Default
 <Value>%%CLASSNAME</Value>
 </Value>
 <Value name="2">
-<Value>ObsId</Value>
+<Value>ResourceId</Value>
 </Value>
 <Value name="3">
-<Value>ObservationTime</Value>
+<Value>ObsId</Value>
 </Value>
 <Value name="4">
-<Value>ObservationGroup</Value>
-</Value>
-<Value name="5">
-<Value>ObservationCode</Value>
-</Value>
-<Value name="6">
-<Value>ObservationDesc</Value>
-</Value>
-<Value name="7">
-<Value>ResultInterpretation</Value>
-</Value>
-<Value name="8">
-<Value>BodySite</Value>
-</Value>
-<Value name="9">
-<Value>ResultType</Value>
-</Value>
-<Value name="10">
-<Value>Value</Value>
-</Value>
-<Value name="11">
-<Value>ValueUnits</Value>
-</Value>
-<Value name="12">
-<Value>SubId</Value>
-</Value>
-<Value name="13">
-<Value>Comments</Value>
-</Value>
-<Value name="14">
-<Value>Clinician</Value>
-</Value>
-<Value name="15">
-<Value>PerformedAt</Value>
-</Value>
-<Value name="16">
-<Value>Status</Value>
-</Value>
-<Value name="17">
-<Value>Encounter</Value>
-</Value>
-<Value name="18">
-<Value>identifier</Value>
-</Value>
-<Value name="19">
-<Value>basedOn</Value>
-</Value>
-<Value name="20">
-<Value>Category</Value>
-</Value>
-<Value name="21">
-<Value>Code</Value>
-</Value>
-<Value name="22">
-<Value>subject</Value>
-</Value>
-<Value name="23">
-<Value>effectiveDateTime</Value>
-</Value>
-<Value name="24">
-<Value>effectivePeriod</Value>
-</Value>
-<Value name="25">
-<Value>issued</Value>
-</Value>
-<Value name="26">
-<Value>performer</Value>
-</Value>
-<Value name="27">
-<Value>valueQuantity</Value>
-</Value>
-<Value name="28">
-<Value>valueCodeableConcept</Value>
-</Value>
-<Value name="29">
-<Value>valueString</Value>
-</Value>
-<Value name="30">
-<Value>valueBoolean</Value>
-</Value>
-<Value name="31">
-<Value>valueRange</Value>
-</Value>
-<Value name="32">
-<Value>valueRatio</Value>
-</Value>
-<Value name="33">
-<Value>valueSampledData</Value>
-</Value>
-<Value name="34">
-<Value>valueAttachment</Value>
-</Value>
-<Value name="35">
-<Value>valueTime</Value>
-</Value>
-<Value name="36">
-<Value>valueDateTime</Value>
-</Value>
-<Value name="37">
-<Value>valuePeriod</Value>
-</Value>
-<Value name="38">
-<Value>dataAbsentReason</Value>
-</Value>
-<Value name="39">
-<Value>interpretation</Value>
-</Value>
-<Value name="40">
-<Value>comment</Value>
-</Value>
-<Value name="41">
-<Value>Method</Value>
-</Value>
-<Value name="42">
-<Value>specimen</Value>
-</Value>
-<Value name="43">
-<Value>device</Value>
-</Value>
-<Value name="44">
-<Value>referenceRange</Value>
-</Value>
-<Value name="45">
-<Value>related</Value>
-</Value>
-<Value name="46">
-<Value>component</Value>
-</Value>
-<Value name="47">
 <Value>Identifier</Value>
 </Value>
-<Value name="48">
+<Value name="5">
+<Value>SubId</Value>
+</Value>
+<Value name="6">
+<Value>Status</Value>
+</Value>
+<Value name="7">
+<Value>StatusHistory</Value>
+</Value>
+<Value name="8">
+<Value>Category</Value>
+</Value>
+<Value name="9">
+<Value>Code</Value>
+</Value>
+<Value name="10">
 <Value>Subject</Value>
 </Value>
-<Value name="49">
+<Value name="11">
+<Value>Encounter</Value>
+</Value>
+<Value name="12">
 <Value>EffectiveDateTime</Value>
 </Value>
-<Value name="50">
+<Value name="13">
 <Value>EffectivePeriod</Value>
 </Value>
-<Value name="51">
+<Value name="14">
 <Value>Performer</Value>
 </Value>
-<Value name="52">
+<Value name="15">
 <Value>ValueType</Value>
 </Value>
-<Value name="53">
+<Value name="16">
 <Value>ValueQuantity</Value>
 </Value>
-<Value name="54">
+<Value name="17">
 <Value>ValueCodeableConcept</Value>
 </Value>
-<Value name="55">
+<Value name="18">
 <Value>ValueString</Value>
 </Value>
-<Value name="56">
+<Value name="19">
 <Value>ValueBoolean</Value>
 </Value>
-<Value name="57">
+<Value name="20">
 <Value>ValueTime</Value>
 </Value>
-<Value name="58">
+<Value name="21">
 <Value>ValueDateTime</Value>
 </Value>
-<Value name="59">
+<Value name="22">
 <Value>ValuePeriod</Value>
 </Value>
-<Value name="60">
+<Value name="23">
 <Value>DataAbsentReason</Value>
 </Value>
-<Value name="61">
+<Value name="24">
 <Value>Interpretation</Value>
 </Value>
-<Value name="62">
+<Value name="25">
 <Value>Comment</Value>
 </Value>
-<Value name="63">
-<Value>StatusHistory</Value>
+<Value name="26">
+<Value>BodySite</Value>
+</Value>
+<Value name="27">
+<Value>Method</Value>
+</Value>
+<Value name="28">
+<Value>ValueUnits</Value>
+</Value>
+<Value name="29">
+<Value>Clinician</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.ObservationD</DataLocation>
 <DefaultData>ObservationDefaultData</DefaultData>
-<Description>
-<![CDATA[Relationship Result As CDR.Result [ Cardinality = one, Inverse = ResultItems ];
-Index ResultIndex On Result;]]></Description>
 <IdLocation>^ODS.ObservationD</IdLocation>
 <IndexLocation>^ODS.ObservationI</IndexLocation>
 <StreamLocation>^ODS.ObservationS</StreamLocation>

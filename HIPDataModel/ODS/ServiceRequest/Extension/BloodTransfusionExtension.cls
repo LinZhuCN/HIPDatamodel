@@ -1,4 +1,4 @@
-Class ODS.ServiceRequest.Extension.BloodTransfusionExtension Extends (%SerialObject, %XML.Adaptor) [ ProcedureBlock ]
+Class ODS.ServiceRequest.Extension.BloodTransfusionExtension Extends ODS.DT.EmbeddedDataType
 {
 
 /// The required blood product
@@ -15,6 +15,8 @@ Property RequestedDispenseTime As %TimeStamp(XMLNAME = "requesteddispensetime", 
 
 Property Barcode As %String(XMLNAME = "barcode", XMLPROJECTION = "ELEMENT");
 
+
+
 Storage Default
 {
 <Data name="BloodTransfusionExtensionState">
@@ -28,9 +30,6 @@ Storage Default
 <Value>RequestedDispenseTime</Value>
 </Value>
 <Value name="4">
-<Value>reason</Value>
-</Value>
-<Value name="5">
 <Value>Barcode</Value>
 </Value>
 </Data>

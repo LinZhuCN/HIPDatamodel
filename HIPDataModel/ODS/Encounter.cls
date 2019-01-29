@@ -1,6 +1,10 @@
 /// 一次就诊
-Class ODS.Encounter Extends (%Persistent, ODS.DT.AbstractResource)
+Class ODS.Encounter Extends ODS.DT.AbstractResource
 {
+
+/// If the resource need a univers unique and required id, overide ResourceId as required
+Property ResourceId As %String(XMLNAME = "ResourceId", XMLPROJECTION = "ELEMENT")[required];
+
 
 /// Identifier(s) by which this encounter is known.
 Property Identifier As ODS.DT.Identifier(XMLNAME = "identifier", XMLPROJECTION = "ELEMENT");
@@ -10,7 +14,7 @@ Property Identifier As ODS.DT.Identifier(XMLNAME = "identifier", XMLPROJECTION =
 /// 就诊状态 planned | arrived | triaged | in-progress | onleave | finished | cancelled +.
 /// The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
 /// 就诊状态历史
-Property StatusHistory As list Of ODS.DT.StatusHistory(XMLNAME = "statusHistory", XMLPROJECTION = "ELEMENT");
+//Property StatusHistory As list Of ODS.DT.StatusHistory(XMLNAME = "statusHistory", XMLPROJECTION = "ELEMENT");
 
 /*/// 上次就诊状态，计算属性
 Property PreviousStatus As ODS.DT.Coding [ Calculated ];*/
@@ -26,7 +30,7 @@ Property Type As list Of ODS.DT.Coding(XMLNAME = "type", XMLPROJECTION = "ELEMEN
 Property Priority As ODS.DT.Coding(XMLNAME = "priority", XMLPROJECTION = "ELEMENT");
 
 /// The patient ro group present at the encounter.
-Relationship Subject As ODS.Patient(XMLNAME = "subject", XMLPROJECTION = "ELEMENT", XMLREFERENCE = "ID") [ Cardinality = one, Inverse = Encounters ];
+Property Subject As ODS.Patient(XMLNAME = "subject", XMLPROJECTION = "ELEMENT") [required];
 
 /// Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).
 /// Property episodeOfCare As list Of HS.FHIR.vSTU3.Model.Base.Reference(XMLNAME = "episodeOfCare", XMLPROJECTION = "ELEMENT");
@@ -62,12 +66,13 @@ Property Extension As ODS.Encounter.Extension(XMLNAME = "extension", XMLPROJECTI
 /// Property partOf As HS.FHIR.vSTU3.Model.Base.Reference(XMLNAME = "partOf", XMLPROJECTION = "ELEMENT");
 Index SubjectIndex On Subject;
 
-Relationship ServiceRequests As ODS.ServiceRequest(XMLNAME = "servicerequest", XMLPROJECTION = "ELEMENT") [ Cardinality = children, Inverse = Encounter ];
+Property ServiceRequests As list of ODS.ServiceRequest(XMLNAME = "servicerequest", XMLPROJECTION = "ELEMENT") ;
 
-Relationship Observations As ODS.Observation(XMLNAME = "observation", XMLPROJECTION = "ELEMENT") [ Cardinality = many, Inverse = Encounter ];
+Property Observations As list of ODS.Observation(XMLNAME = "observation", XMLPROJECTION = "ELEMENT") ;
 
 /// The list of diagnosis relevant to this encounter.
-Relationship Diagnoses As ODS.Diagnosis(XMLNAME = "diagnosis", XMLPROJECTION = "ELEMENT") [ Cardinality = many, Inverse = Encounter ];
+Property Diagnoses As ODS.Diagnosis(XMLNAME = "diagnosis", XMLPROJECTION = "ELEMENT") ;
+
 
 Storage Default
 {
@@ -76,52 +81,55 @@ Storage Default
 <Value>%%CLASSNAME</Value>
 </Value>
 <Value name="2">
-<Value>Identifier</Value>
+<Value>ResourceId</Value>
 </Value>
 <Value name="3">
-<Value>Status</Value>
+<Value>Identifier</Value>
 </Value>
 <Value name="4">
-<Value>StatusHistory</Value>
-</Value>
-<Value name="5">
 <Value>Class</Value>
 </Value>
-<Value name="6">
+<Value name="5">
 <Value>Type</Value>
 </Value>
-<Value name="7">
+<Value name="6">
 <Value>Priority</Value>
 </Value>
-<Value name="8">
+<Value name="7">
 <Value>Subject</Value>
 </Value>
-<Value name="9">
+<Value name="8">
 <Value>IncomingReferral</Value>
 </Value>
-<Value name="10">
+<Value name="9">
 <Value>Participant</Value>
 </Value>
-<Value name="11">
+<Value name="10">
 <Value>Period</Value>
 </Value>
-<Value name="12">
+<Value name="11">
 <Value>Length</Value>
 </Value>
-<Value name="13">
+<Value name="12">
 <Value>Reason</Value>
 </Value>
-<Value name="14">
+<Value name="13">
 <Value>Hospitalization</Value>
 </Value>
-<Value name="15">
+<Value name="14">
 <Value>Location</Value>
 </Value>
-<Value name="16">
+<Value name="15">
 <Value>Extension</Value>
 </Value>
+<Value name="16">
+<Value>ServiceRequests</Value>
+</Value>
 <Value name="17">
-<Value>ResourceId</Value>
+<Value>Observations</Value>
+</Value>
+<Value name="18">
+<Value>Diagnoses</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.EncounterD</DataLocation>

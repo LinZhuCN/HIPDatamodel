@@ -13,7 +13,7 @@
 ///    </coding>
 ///    <text value="general headache" />
 ///  </concept>
-Class ODS.DT.CodeableConcept Extends (%SerialObject, %XML.Adaptor)
+Class ODS.DT.CodeableConcept Extends ODS.DT.EmbeddedDataType
 {
 
 /// A reference to a code defined by a terminology system.
@@ -21,6 +21,9 @@ Property coding As list Of ODS.DT.Coding(XMLNAME = "coding", XMLPROJECTION = "EL
 
 /// A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.
 Property text As %String(XMLNAME = "text", XMLPROJECTION = "ELEMENT");
+
+
+
 
 Storage Default
 {

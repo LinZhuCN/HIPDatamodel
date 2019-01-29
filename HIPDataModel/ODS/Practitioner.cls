@@ -1,4 +1,4 @@
-Class ODS.Practitioner Extends (%Persistent, %XML.Adaptor) [ ProcedureBlock ]
+Class ODS.Practitioner Extends ODS.DT.AbstractResource 
 {
 
 Parameter ELEMENTQUALIFIED = 1;
@@ -38,6 +38,9 @@ Property Photo As list Of HS.FHIR.Model.Base.Attachment(XMLNAME = "photo", XMLPR
 /// A language the practitioner is able to use in patient communication.
 Property Communication As list Of ODS.DT.CodeableConcept(XMLNAME = "communication", XMLPROJECTION = "ELEMENT");
 
+
+
+
 Storage Default
 {
 <Data name="PractitionerDefaultData">
@@ -45,36 +48,33 @@ Storage Default
 <Value>%%CLASSNAME</Value>
 </Value>
 <Value name="2">
-<Value>Identifier</Value>
+<Value>ResourceId</Value>
 </Value>
 <Value name="3">
-<Value>Active</Value>
+<Value>Identifier</Value>
 </Value>
 <Value name="4">
-<Value>Name</Value>
+<Value>Active</Value>
 </Value>
 <Value name="5">
-<Value>telecom</Value>
+<Value>Name</Value>
 </Value>
 <Value name="6">
-<Value>Address</Value>
+<Value>telecom</Value>
 </Value>
 <Value name="7">
-<Value>Gender</Value>
+<Value>Address</Value>
 </Value>
 <Value name="8">
-<Value>BirthDate</Value>
+<Value>Gender</Value>
 </Value>
 <Value name="9">
-<Value>Photo</Value>
+<Value>BirthDate</Value>
 </Value>
 <Value name="10">
-<Value>practitionerRole</Value>
+<Value>Photo</Value>
 </Value>
 <Value name="11">
-<Value>qualification</Value>
-</Value>
-<Value name="12">
 <Value>Communication</Value>
 </Value>
 </Data>

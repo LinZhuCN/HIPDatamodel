@@ -1,4 +1,4 @@
-Class ODS.DT.Identifier Extends (%SerialObject, %XML.Adaptor)
+Class ODS.DT.Identifier Extends ODS.DT.EmbeddedDataType
 {
 
 /// The purpose of this identifier.
@@ -15,8 +15,9 @@ Property Value As %String(XMLNAME = "value", XMLPROJECTION = "ELEMENT");
 /// Time period during which identifier is/was valid for use.
 Property Period As ODS.DT.Period(XMLNAME = "period", XMLPROJECTION = "ELEMENT");
 
-/// Organization that issued/manages the identifier.
-/// Property Assigner As HS.FHIR.vSTU3.Model.Base.Reference(XMLNAME = "assigner", XMLPROJECTION = "ELEMENT");
+
+
+
 Storage Default
 {
 <Data name="IdentifierState">
@@ -33,9 +34,6 @@ Storage Default
 <Value>Period</Value>
 </Value>
 </Data>
-<Description>
-<![CDATA[Organization that issued/manages the identifier.
-Property Assigner As HS.FHIR.vSTU3.Model.Base.Reference(XMLNAME = "assigner", XMLPROJECTION = "ELEMENT");]]></Description>
 <State>IdentifierState</State>
 <StreamLocation>^ODS.DT.IdentifierS</StreamLocation>
 <Type>%Library.CacheSerialState</Type>

@@ -1,5 +1,5 @@
 /// Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained or accommodated.
-Class ODS.Location Extends (%Persistent, %XML.Adaptor) [ ProcedureBlock ]
+Class ODS.Location Extends ODS.DT.AbstractResource
 {
 
 Parameter XMLNAME = "Location";
@@ -35,12 +35,7 @@ Property Address As ODS.DT.Address(XMLNAME = "address");
 /// Physical form of the location, e.g. building, room, vehicle, road.
 Property PhysicalType As ODS.DT.CodeableConcept(XMLNAME = "physicalType");
 
-/// The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
-/// Property position As HS.FHIR.Model.Resource.Location.Position(XMLNAME = "position");
-/// The organization responsible for the provisioning and upkeep of the location.
-/// Property managingOrganization As HS.FHIR.Model.Base.Reference(XMLNAME = "managingOrganization");
-/// Another Location which this Location is physically part of.
-/// Property partOf As HS.FHIR.Model.Base.Reference(XMLNAME = "partOf");
+
 Storage Default
 {
 <Data name="LocationDefaultData">
@@ -48,42 +43,38 @@ Storage Default
 <Value>%%CLASSNAME</Value>
 </Value>
 <Value name="2">
-<Value>Identifier</Value>
+<Value>ResourceId</Value>
 </Value>
 <Value name="3">
-<Value>Status</Value>
+<Value>Identifier</Value>
 </Value>
 <Value name="4">
-<Value>OperationalStatus</Value>
+<Value>Status</Value>
 </Value>
 <Value name="5">
-<Value>Name</Value>
+<Value>OperationalStatus</Value>
 </Value>
 <Value name="6">
-<Value>Description</Value>
+<Value>Name</Value>
 </Value>
 <Value name="7">
-<Value>Mode</Value>
+<Value>Description</Value>
 </Value>
 <Value name="8">
-<Value>Type</Value>
+<Value>Mode</Value>
 </Value>
 <Value name="9">
-<Value>Address</Value>
+<Value>Type</Value>
 </Value>
 <Value name="10">
+<Value>Address</Value>
+</Value>
+<Value name="11">
 <Value>PhysicalType</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.LocationD</DataLocation>
 <DefaultData>LocationDefaultData</DefaultData>
-<Description>
-<![CDATA[The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
-Property position As HS.FHIR.Model.Resource.Location.Position(XMLNAME = "position");
-The organization responsible for the provisioning and upkeep of the location.
-Property managingOrganization As HS.FHIR.Model.Base.Reference(XMLNAME = "managingOrganization");
-Another Location which this Location is physically part of.
-Property partOf As HS.FHIR.Model.Base.Reference(XMLNAME = "partOf");]]></Description>
 <IdLocation>^ODS.LocationD</IdLocation>
 <IndexLocation>^ODS.LocationI</IndexLocation>
 <StreamLocation>^ODS.LocationS</StreamLocation>

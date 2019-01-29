@@ -1,7 +1,6 @@
 /// 医嘱(非药嘱)
-Class ODS.ServiceRequest Extends (%Persistent, ODS.DT.AbstractResource) [ ProcedureBlock ]
+Class ODS.ServiceRequest Extends ODS.DT.AbstractResource 
 {
-
 Parameter XMLNAME = "ServiceRequest";
 
 Parameter XMLSEQUENCE = 1;
@@ -59,7 +58,7 @@ Property Subject As ODS.Patient(XMLNAME = "subject", XMLPROJECTION = "ELEMENT") 
 
 /// An encounter or episode of care that provides additional information about the healthcare context in which this request is made.
 /// 就诊
-Relationship Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT", XMLREFERENCE = "ID") [ Cardinality = parent, Inverse = ServiceRequests ];
+Property Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT");
 
 Property OccurrenceDateTime As %TimeStamp(XMLNAME = "occurrenceDateTime", XMLPROJECTION = "ELEMENT");
 
@@ -107,7 +106,12 @@ Property Extension As ODS.ServiceRequest.Extension(XMLNAME = "extension", XMLPRO
 /// 下达医嘱的地点（科室、病房等）
 Property Location As ODS.ServiceRequest.Location(XMLNAME = "location", XMLPROJECTION = "ELEMENT");
 
-Index EncounterIndex On Encounter;
+//Index EncounterIndex On Encounter;
+
+
+
+
+
 
 Storage Default
 {
@@ -155,42 +159,45 @@ Storage Default
 <Value>Subject</Value>
 </Value>
 <Value name="15">
-<Value>OccurrenceDateTime</Value>
+<Value>Encounter</Value>
 </Value>
 <Value name="16">
-<Value>OccurrencePeriod</Value>
+<Value>OccurrenceDateTime</Value>
 </Value>
 <Value name="17">
-<Value>AuthoredOn</Value>
+<Value>OccurrencePeriod</Value>
 </Value>
 <Value name="18">
-<Value>Requester</Value>
+<Value>AuthoredOn</Value>
 </Value>
 <Value name="19">
-<Value>PerformerType</Value>
+<Value>Requester</Value>
 </Value>
 <Value name="20">
-<Value>Performer</Value>
+<Value>PerformerType</Value>
 </Value>
 <Value name="21">
-<Value>ReasonCode</Value>
+<Value>Performer</Value>
 </Value>
 <Value name="22">
-<Value>BodySite</Value>
+<Value>ReasonCode</Value>
 </Value>
 <Value name="23">
-<Value>Note</Value>
+<Value>BodySite</Value>
 </Value>
 <Value name="24">
-<Value>Extension</Value>
+<Value>Note</Value>
 </Value>
 <Value name="25">
+<Value>Extension</Value>
+</Value>
+<Value name="26">
 <Value>Location</Value>
 </Value>
 </Data>
-<DataLocation>{%%PARENT}("ServiceRequests")</DataLocation>
+<DataLocation>^ODS.ServiceRequestD</DataLocation>
 <DefaultData>ServiceRequestDefaultData</DefaultData>
-<IdLocation>^ODS.EncounterC("ServiceRequests")</IdLocation>
+<IdLocation>^ODS.ServiceRequestD</IdLocation>
 <IndexLocation>^ODS.ServiceRequestI</IndexLocation>
 <StreamLocation>^ODS.ServiceRequestS</StreamLocation>
 <Type>%Library.CacheStorage</Type>

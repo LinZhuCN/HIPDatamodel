@@ -1,4 +1,4 @@
-Class ODS.DT.StatusHistory Extends (%SerialObject, %XML.Adaptor)
+Class ODS.DT.StatusHistory Extends ODS.DT.EmbeddedDataType
 {
 
 /// 记录时间戳/序号.
@@ -12,6 +12,9 @@ Property Period As ODS.DT.Period(XMLNAME = "period", XMLPROJECTION = "ELEMENT") 
 
 /// 记录状态变化的机构、系统和时间戳.
 Property Recorder As %String(XMLNAME = "recorder", XMLPROJECTION = "ELEMENT");
+
+
+
 
 Storage Default
 {

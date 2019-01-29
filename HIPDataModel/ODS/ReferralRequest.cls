@@ -1,5 +1,5 @@
 /// 转诊请求
-Class ODS.ReferralRequest Extends (%Persistent, %XML.Adaptor)
+Class ODS.ReferralRequest Extends ODS.DT.AbstractResource
 {
 
 /// The workflow status of the referral or transfer of care request.
@@ -47,6 +47,10 @@ Property ServiceRequested As list Of ODS.DT.Coding(XMLNAME = "serviceRequested",
 /// The period of time within which the services identified in the referral/transfer of care is specified or required to occur.
 Property FulfillmentTime As ODS.DT.Period(XMLNAME = "fulfillmentTime");
 
+
+
+
+
 Storage Default
 {
 <Data name="ReferralRequestDefaultData">
@@ -54,88 +58,46 @@ Storage Default
 <Value>%%CLASSNAME</Value>
 </Value>
 <Value name="2">
-<Value>status</Value>
+<Value>ResourceId</Value>
 </Value>
 <Value name="3">
-<Value>identifier</Value>
-</Value>
-<Value name="4">
-<Value>date</Value>
-</Value>
-<Value name="5">
-<Value>type</Value>
-</Value>
-<Value name="6">
-<Value>specialty</Value>
-</Value>
-<Value name="7">
-<Value>priority</Value>
-</Value>
-<Value name="8">
-<Value>patient</Value>
-</Value>
-<Value name="9">
-<Value>requester</Value>
-</Value>
-<Value name="10">
-<Value>recipient</Value>
-</Value>
-<Value name="11">
-<Value>encounter</Value>
-</Value>
-<Value name="12">
-<Value>dateSent</Value>
-</Value>
-<Value name="13">
-<Value>Reason</Value>
-</Value>
-<Value name="14">
-<Value>description</Value>
-</Value>
-<Value name="15">
-<Value>serviceRequested</Value>
-</Value>
-<Value name="16">
-<Value>supportingInformation</Value>
-</Value>
-<Value name="17">
-<Value>fulfillmentTime</Value>
-</Value>
-<Value name="18">
-<Value>Status</Value>
-</Value>
-<Value name="19">
 <Value>Identifier</Value>
 </Value>
-<Value name="20">
+<Value name="4">
 <Value>Date</Value>
 </Value>
-<Value name="21">
+<Value name="5">
 <Value>Type</Value>
 </Value>
-<Value name="22">
+<Value name="6">
 <Value>Specialty</Value>
 </Value>
-<Value name="23">
+<Value name="7">
 <Value>Priority</Value>
 </Value>
-<Value name="24">
+<Value name="8">
 <Value>Patient</Value>
 </Value>
-<Value name="25">
+<Value name="9">
 <Value>Encounter</Value>
 </Value>
-<Value name="26">
+<Value name="10">
 <Value>DateSent</Value>
 </Value>
-<Value name="27">
+<Value name="11">
+<Value>Reason</Value>
+</Value>
+<Value name="12">
 <Value>Description</Value>
 </Value>
-<Value name="28">
+<Value name="13">
 <Value>ServiceRequested</Value>
 </Value>
-<Value name="29">
+<Value name="14">
 <Value>FulfillmentTime</Value>
+</Value>
+<Value name="15">
+<Value>Status</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.ReferralRequestD</DataLocation>

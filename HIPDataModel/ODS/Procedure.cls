@@ -1,11 +1,17 @@
-Class ODS.Procedure Extends (%Persistent,%XML.Adaptor)
+Class ODS.Procedure Extends ODS.DT.AbstractResource
 {
+
+
+
 
 Storage Default
 {
 <Data name="ProcedureDefaultData">
 <Value name="1">
 <Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>ResourceId</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.ProcedureD</DataLocation>

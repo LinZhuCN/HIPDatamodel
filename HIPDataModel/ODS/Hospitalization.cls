@@ -1,5 +1,5 @@
 /// 住院记录
-Class ODS.Hospitalization Extends (%SerialObject, %XML.Adaptor)
+Class ODS.Hospitalization Extends ODS.DT.AbstractResource
 {
 
 Parameter XMLNAME = "Encounter.Hospitalization";
@@ -35,67 +35,54 @@ Property Destination As ODS.Location(XMLNAME = "destination");
 /// Category or kind of location after discharge.
 Property dischargeDisposition As ODS.DT.CodeableConcept(XMLNAME = "dischargeDisposition");
 
+
 Storage Default
 {
-<Data name="HospitalizationState">
+<Data name="HospitalizationDefaultData">
+<Subscript>"1"</Subscript>
 <Value name="1">
-<Value>OriginLocation</Value>
-</Value>
-<Value name="2">
-<Value>FromTime</Value>
-</Value>
-<Value name="3">
-<Value>ToTime</Value>
-</Value>
-<Value name="4">
-<Value>SpecialCourtesy</Value>
-</Value>
-<Value name="5">
-<Value>Location</Value>
-</Value>
-<Value name="6">
-<Value>Encounter</Value>
-</Value>
-<Value name="7">
-<Value>preAdmissionIdentifier</Value>
-</Value>
-<Value name="8">
-<Value>origin</Value>
-</Value>
-<Value name="9">
-<Value>AdmitSource</Value>
-</Value>
-<Value name="10">
-<Value>admittingDiagnosis</Value>
-</Value>
-<Value name="11">
-<Value>ReAdmission</Value>
-</Value>
-<Value name="12">
-<Value>DietPreference</Value>
-</Value>
-<Value name="13">
-<Value>specialCourtesy</Value>
-</Value>
-<Value name="14">
-<Value>specialArrangement</Value>
-</Value>
-<Value name="15">
-<Value>destination</Value>
-</Value>
-<Value name="16">
-<Value>dischargeDisposition</Value>
-</Value>
-<Value name="17">
-<Value>dischargeDiagnosis</Value>
-</Value>
-<Value name="18">
-<Value>Destination</Value>
+<Value>%%CLASSNAME</Value>
 </Value>
 </Data>
+<Data name="HospitalizationState">
+<Value name="1">
+<Value>ResourceId</Value>
+</Value>
+<Value name="2">
+<Value>preAdmissionIdentifier</Value>
+</Value>
+<Value name="3">
+<Value>origin</Value>
+</Value>
+<Value name="4">
+<Value>AdmitSource</Value>
+</Value>
+<Value name="5">
+<Value>ReAdmission</Value>
+</Value>
+<Value name="6">
+<Value>DietPreference</Value>
+</Value>
+<Value name="7">
+<Value>specialCourtesy</Value>
+</Value>
+<Value name="8">
+<Value>specialArrangement</Value>
+</Value>
+<Value name="9">
+<Value>Destination</Value>
+</Value>
+<Value name="10">
+<Value>dischargeDisposition</Value>
+</Value>
+</Data>
+<DataLocation>^ODS.HospitalizationD</DataLocation>
+<DefaultData>HospitalizationDefaultData</DefaultData>
+<IdLocation>^ODS.HospitalizationD</IdLocation>
+<IndexLocation>^ODS.HospitalizationI</IndexLocation>
 <State>HospitalizationState</State>
 <StreamLocation>^ODS.HospitalizationS</StreamLocation>
-<Type>%Library.CacheSerialState</Type>
+<Type>%Library.CacheStorage</Type>
 }
 
 }
