@@ -5,6 +5,9 @@ Parameter XMLNAME = "ServiceRequest";
 
 Parameter XMLSEQUENCE = 1;
 
+/// If the resource need a univers unique and required id, overide ResourceId as required
+Property ResourceId As %String(XMLNAME = "ResourceId", XMLPROJECTION = "ELEMENT")[required];
+
 /// Identifiers assigned to this order instance by the orderer and/or the receiver and/or order fulfiller.
 /// 医嘱号
 Property Identifier As ODS.DT.Identifier(XMLNAME = "identifier", XMLPROJECTION = "ELEMENT");
@@ -26,7 +29,7 @@ Property Requisition As ODS.DT.Identifier(XMLNAME = "requisition", XMLPROJECTION
 Property Status As ODS.DT.Coding(XMLNAME = "status", XMLPROJECTION = "ELEMENT") [ Required ];
 
 /// 医嘱状态历史
-Property StatusHistory As list Of ODS.DT.StatusHistory(XMLNAME = "statusHistory", XMLPROJECTION = "ELEMENT");
+//Property StatusHistory As list Of ODS.DT.StatusHistory(XMLNAME = "statusHistory", XMLPROJECTION = "ELEMENT");
 
 /*
 /// 上次医嘱状态，计算属性
@@ -54,7 +57,7 @@ Property QuantityQuantity As ODS.DT.Quantity(XMLNAME = "quantityQuantity", XMLPR
 
 /// On whom or what the procedure or diagnostic is to be performed. This is usually a human patient, but can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans).
 /// 医嘱目标患者
-Property Subject As ODS.Patient(XMLNAME = "subject", XMLPROJECTION = "ELEMENT") [ Required ];
+Property Subject As ODS.Patient(XMLNAME = "subject", XMLPROJECTION = "ELEMENT");
 
 /// An encounter or episode of care that provides additional information about the healthcare context in which this request is made.
 /// 就诊

@@ -38,6 +38,8 @@ Property IsPrimary As %Boolean(XMLNAME = "isPrimary", XMLPROJECTION = "ELEMENT")
 
 Property Encounter As ODS.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT") ;
 
+Property GroupCode AS %String(XMLNAME = "groupCode", XMLPROJECTION = "ELEMENT");
+
 // Index EncounterIndex On Encounter;
 
 Storage Default
@@ -75,6 +77,9 @@ Storage Default
 </Value>
 <Value name="11">
 <Value>Role</Value>
+</Value>
+<Value name="12">
+<Value>GroupCode</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.DiagnosisD</DataLocation>
