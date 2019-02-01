@@ -66,12 +66,12 @@ Property Extension As ODS.Encounter.Extension(XMLNAME = "extension", XMLPROJECTI
 /// Property partOf As HS.FHIR.vSTU3.Model.Base.Reference(XMLNAME = "partOf", XMLPROJECTION = "ELEMENT");
 Index SubjectIndex On Subject;
 
-Property ServiceRequests As list of ODS.ServiceRequest(XMLNAME = "servicerequest", XMLPROJECTION = "ELEMENT") ;
+Property ServiceRequests As list of ODS.ServiceRequest(XMLNAME = "servicerequests", XMLPROJECTION = "ELEMENT") ;
 
 Property Observations As list of ODS.Observation(XMLNAME = "observation", XMLPROJECTION = "ELEMENT") ;
 
 /// The list of diagnosis relevant to this encounter.
-Property Diagnoses As ODS.Diagnosis(XMLNAME = "diagnosis", XMLPROJECTION = "ELEMENT") ;
+Property Diagnoses As list of ODS.Diagnosis(XMLNAME = "diagnoses", XMLPROJECTION = "ELEMENT") ;
 
 
 Storage Default

@@ -101,7 +101,7 @@ Property BodySite As list Of ODS.DT.Coding(XMLNAME = "bodySite", XMLPROJECTION =
 
 /// Any other notes and comments made about the service request. For example, letting provider know that "patient hates needles" or other provider instructions.
 /// 医嘱说明
-Property Note As list Of %String(XMLNAME = "note", XMLPROJECTION = "ELEMENT");
+Property Notes As list Of ODS.ServiceRequest.Note(XMLNAME = "notes", XMLPROJECTION = "ELEMENT");
 
 /// Extension added
 Property Extension As ODS.ServiceRequest.Extension(XMLNAME = "extension", XMLPROJECTION = "ELEMENT");
@@ -110,10 +110,6 @@ Property Extension As ODS.ServiceRequest.Extension(XMLNAME = "extension", XMLPRO
 Property Location As ODS.ServiceRequest.Location(XMLNAME = "location", XMLPROJECTION = "ELEMENT");
 
 //Index EncounterIndex On Encounter;
-
-
-
-
 
 
 Storage Default
@@ -138,63 +134,60 @@ Storage Default
 <Value>Status</Value>
 </Value>
 <Value name="7">
-<Value>StatusHistory</Value>
-</Value>
-<Value name="8">
 <Value>Intent</Value>
 </Value>
-<Value name="9">
+<Value name="8">
 <Value>Priority</Value>
 </Value>
-<Value name="10">
+<Value name="9">
 <Value>DoNotPerform</Value>
 </Value>
-<Value name="11">
+<Value name="10">
 <Value>Category</Value>
 </Value>
-<Value name="12">
+<Value name="11">
 <Value>Code</Value>
 </Value>
-<Value name="13">
+<Value name="12">
 <Value>QuantityQuantity</Value>
 </Value>
-<Value name="14">
+<Value name="13">
 <Value>Subject</Value>
 </Value>
-<Value name="15">
+<Value name="14">
 <Value>Encounter</Value>
 </Value>
-<Value name="16">
+<Value name="15">
 <Value>OccurrenceDateTime</Value>
 </Value>
-<Value name="17">
+<Value name="16">
 <Value>OccurrencePeriod</Value>
 </Value>
-<Value name="18">
+<Value name="17">
 <Value>AuthoredOn</Value>
 </Value>
-<Value name="19">
+<Value name="18">
 <Value>Requester</Value>
 </Value>
-<Value name="20">
+<Value name="19">
 <Value>PerformerType</Value>
 </Value>
-<Value name="21">
+<Value name="20">
 <Value>Performer</Value>
 </Value>
-<Value name="22">
+<Value name="21">
 <Value>ReasonCode</Value>
 </Value>
-<Value name="23">
+<Value name="22">
 <Value>BodySite</Value>
 </Value>
-<Value name="24">
-<Value>Note</Value>
+<Value name="23">
+<Value>Notes</Value>
 </Value>
-<Value name="25">
+<Value name="24">
 <Value>Extension</Value>
 </Value>
-<Value name="26">
+<Value name="25">
 <Value>Location</Value>
 </Value>
 </Data>

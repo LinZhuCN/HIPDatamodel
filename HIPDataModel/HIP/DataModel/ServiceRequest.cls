@@ -13,6 +13,7 @@ Property Subject As HIP.DataModel.Patient(XMLNAME = "subject", XMLPROJECTION = "
 /// An encounter or episode of care that provides additional information about the healthcare context in which this request is made.
 /// 就诊
 Property Encounter As HIP.DataModel.Encounter(XMLNAME = "encounter", XMLPROJECTION = "ELEMENT");
+
 Storage Default
 {
 <Data name="ServiceRequestDefaultData">
@@ -32,63 +33,60 @@ Storage Default
 <Value>Status</Value>
 </Value>
 <Value name="6">
-<Value>StatusHistory</Value>
-</Value>
-<Value name="7">
 <Value>Intent</Value>
 </Value>
-<Value name="8">
+<Value name="7">
 <Value>Priority</Value>
 </Value>
-<Value name="9">
+<Value name="8">
 <Value>DoNotPerform</Value>
 </Value>
-<Value name="10">
+<Value name="9">
 <Value>Category</Value>
 </Value>
-<Value name="11">
+<Value name="10">
 <Value>Code</Value>
 </Value>
-<Value name="12">
+<Value name="11">
 <Value>QuantityQuantity</Value>
 </Value>
-<Value name="13">
+<Value name="12">
 <Value>OccurrenceDateTime</Value>
 </Value>
-<Value name="14">
+<Value name="13">
 <Value>OccurrencePeriod</Value>
 </Value>
-<Value name="15">
+<Value name="14">
 <Value>AuthoredOn</Value>
 </Value>
-<Value name="16">
+<Value name="15">
 <Value>Requester</Value>
 </Value>
-<Value name="17">
+<Value name="16">
 <Value>PerformerType</Value>
 </Value>
-<Value name="18">
+<Value name="17">
 <Value>Performer</Value>
 </Value>
-<Value name="19">
+<Value name="18">
 <Value>ReasonCode</Value>
 </Value>
-<Value name="20">
+<Value name="19">
 <Value>BodySite</Value>
 </Value>
-<Value name="21">
-<Value>Note</Value>
+<Value name="20">
+<Value>Notes</Value>
 </Value>
-<Value name="22">
+<Value name="21">
 <Value>Extension</Value>
 </Value>
-<Value name="23">
+<Value name="22">
 <Value>Location</Value>
 </Value>
-<Value name="24">
+<Value name="23">
 <Value>OrderQuantity</Value>
 </Value>
-<Value name="25">
+<Value name="24">
 <Value>Subject</Value>
 </Value>
 </Data>

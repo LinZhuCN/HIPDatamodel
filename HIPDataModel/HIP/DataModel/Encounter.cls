@@ -11,6 +11,13 @@ Parameter XMLTYPE = "HIP.DataModel.Encounter";
 /// The patient ro group present at the encounter.
 Property Subject As HIP.DataModel.Patient(XMLNAME = "subject", XMLPROJECTION = "ELEMENT") [ Required ];
 
+Property ServiceRequests As list of HIP.DataModel.ServiceRequest(XMLNAME = "servicerequests", XMLPROJECTION = "ELEMENT") ;
+
+
+///Property Observations As list of ODS.Observation(XMLNAME = "observation", XMLPROJECTION = "ELEMENT") ;
+
+/// The list of diagnosis relevant to this encounter.
+Property Diagnoses As list of HIP.DataModel.Diagnosis(XMLNAME = "diagnoses", XMLPROJECTION = "ELEMENT") ;
 
 
 Storage Default

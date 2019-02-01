@@ -1,10 +1,12 @@
-Class ODS.BatchServiceRequest Extends ODS.DT.AbstractResource 
+Class ODS.BatchObservation Extends ODS.DT.AbstractResource 
 {
-	Parameter XMLNAME = "BatchServiceRequest";
+	
+	Parameter XMLNAME = "BatchObservation";
 
 	Parameter XMLSEQUENCE = 1;
 	
-	/// 医嘱目标患者
+	
+		/// 医嘱目标患者
 Property Patient As ODS.Patient(XMLNAME = "subject");
 
 /// An encounter or episode of care that provides additional information about the healthcare context in which this request is made.
@@ -13,11 +15,11 @@ Property Encounter As ODS.Encounter(XMLNAME = "encounter");
 
 /// An encounter or episode of care that provides additional information about the healthcare context in which this request is made.
 /// 就诊
-Property ServiceRequests As list of  ODS.ServiceRequest(XMLNAME = "serviceRequests");
-
+Property Observations As list of  ODS.Observation (XMLNAME = "observations");
+	
 Storage Default
 {
-<Data name="BatchServiceRequestDefaultData">
+<Data name="BatchObservationDefaultData">
 <Value name="1">
 <Value>%%CLASSNAME</Value>
 </Value>
@@ -25,23 +27,20 @@ Storage Default
 <Value>ResourceId</Value>
 </Value>
 <Value name="3">
-<Value>Subject</Value>
+<Value>Patient</Value>
 </Value>
 <Value name="4">
 <Value>Encounter</Value>
 </Value>
 <Value name="5">
-<Value>ServiceRequests</Value>
-</Value>
-<Value name="6">
-<Value>Patient</Value>
+<Value>Observations</Value>
 </Value>
 </Data>
-<DataLocation>^ODS.BatchServiceRequestD</DataLocation>
-<DefaultData>BatchServiceRequestDefaultData</DefaultData>
-<IdLocation>^ODS.BatchServiceRequestD</IdLocation>
-<IndexLocation>^ODS.BatchServiceRequestI</IndexLocation>
-<StreamLocation>^ODS.BatchServiceRequestS</StreamLocation>
+<DataLocation>^ODS.BatchObservationD</DataLocation>
+<DefaultData>BatchObservationDefaultData</DefaultData>
+<IdLocation>^ODS.BatchObservationD</IdLocation>
+<IndexLocation>^ODS.BatchObservationI</IndexLocation>
+<StreamLocation>^ODS.BatchObservationS</StreamLocation>
 <Type>%Library.CacheStorage</Type>
 }
 

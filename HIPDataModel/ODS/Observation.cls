@@ -31,17 +31,17 @@ Property SubId As %String(MAXLEN = 30);
 /// If ResultValue or Range is changed, and previous TestItemStatus is F or K then status="K"
 ///  and ResultStatus is updated to K.<br>
 /// Except into Access Gateway, when the TestItemStatus is stored unchanged
-Property Status As ODS.DT.Coding(XMLNAME = "status", XMLPROJECTION = "ELEMENT") [ Required ];
+Property Status As ODS.DT.Coding(XMLNAME = "status", XMLPROJECTION = "ELEMENT") ;
 
 /// 观察结果状态历史
-Property StatusHistory As list Of ODS.DT.StatusHistory(XMLNAME = "statusHistory", XMLPROJECTION = "ELEMENT");
+//Property StatusHistory As list Of ODS.DT.StatusHistory(XMLNAME = "statusHistory", XMLPROJECTION = "ELEMENT");
 
 /// 上次观察结果状态，计算属性
-Property PreviousStatus As ODS.DT.Coding [ Calculated ];
+//Property PreviousStatus As ODS.DT.Coding [ Calculated ];
 
 /// A code that classifies the general type of observation being made.
 /// 观察结果组：化验,镜检,体征,B超,影像...
-Property Category As %String(XMLNAME = "category", XMLPROJECTION = "ELEMENT");
+Property Category As ODS.DT.Coding(XMLNAME = "category", XMLPROJECTION = "ELEMENT");
 
 /// Describes what was observed. Sometimes this is called the observation "name".
 /// 观察结果编码
@@ -78,6 +78,9 @@ Property Performer As list Of ODS.Practitioner(XMLNAME = "performer", XMLPROJECT
 /// 结果类型:数值型(NM)、文本型(FT)、链接型(RP)、字符串(ST)
 Property ValueType As %String [ InitialExpression = "NM" ];
 
+Property Value As list Of %String(XMLNAME = "value", XMLPROJECTION = "ELEMENT");
+
+/*
 /// 观察结果值
 /// Value of observation<br>
 /// HL7:  OBX-5  : ObservationValue<br>
@@ -104,7 +107,7 @@ Property ValueTime As %TimeStamp(XMLNAME = "valueTime", XMLPROJECTION = "ELEMENT
 /// 观察结果时间 - 时间戳格式
 Property ValueDateTime As %TimeStamp(XMLNAME = "valueDateTime", XMLPROJECTION = "ELEMENT");
 
-Property ValuePeriod As ODS.DT.Period(XMLNAME = "valuePeriod", XMLPROJECTION = "ELEMENT");
+Property ValuePeriod As ODS.DT.Period(XMLNAME = "valuePeriod", XMLPROJECTION = "ELEMENT");*/
 
 /// Provides a reason why the expected value in the element Observation.value[x] is missing.
 Property DataAbsentReason As ODS.DT.Coding(XMLNAME = "dataAbsentReason", XMLPROJECTION = "ELEMENT");
@@ -150,6 +153,10 @@ Property Method As ODS.DT.Coding(XMLNAME = "method", XMLPROJECTION = "ELEMENT");
 /// Not stored for Antibiotic Sensitivities<br>
 /// $c(16) is stripped out
 Property ValueUnits As %String(MAXLEN = 30);
+
+Property ReferenceRange As ODS.Observation.ReferenceRange(XMLNAME = "referenceRange", XMLPROJECTION = "ELEMENT");
+
+Property Specimen As ODS.Observation.Specimen(XMLNAME = "specimen", XMLPROJECTION = "ELEMENT");
 
 /// 记录医生
 /// Clinician who made the observation<br>
@@ -253,6 +260,15 @@ Storage Default
 </Value>
 <Value name="29">
 <Value>Clinician</Value>
+</Value>
+<Value name="30">
+<Value>Value</Value>
+</Value>
+<Value name="31">
+<Value>ReferenceRange</Value>
+</Value>
+<Value name="32">
+<Value>Specimen</Value>
 </Value>
 </Data>
 <DataLocation>^ODS.ObservationD</DataLocation>
