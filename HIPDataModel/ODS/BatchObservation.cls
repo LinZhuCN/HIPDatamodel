@@ -4,10 +4,6 @@ Class ODS.BatchObservation Extends ODS.DT.AbstractResource
 	Parameter XMLNAME = "BatchObservation";
 
 	Parameter XMLSEQUENCE = 1;
-	
-	
-		/// 医嘱目标患者
-Property Patient As ODS.Patient(XMLNAME = "subject");
 
 /// An encounter or episode of care that provides additional information about the healthcare context in which this request is made.
 /// 就诊
